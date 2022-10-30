@@ -36,6 +36,7 @@ public class Nodo {
         if (index == pos) {
             if (this.NSiguiente != null) {
                 this.NAnterior.setNSiguiente(this.NSiguiente);
+                this.NSiguiente.setNAnterior(this.NAnterior);
                 this.NSiguiente = null;
             }else{
                 this.NAnterior.setNSiguiente(null);
@@ -46,8 +47,17 @@ public class Nodo {
     }
 
     public void setNSiguiente (Nodo n){
-        this.NSiguiente = n;
+    	if (this.NSiguiente == null) {
+    		n.setNAnterior(this);
+    	   	this.NSiguiente = n;
+    	}
+        else
+        	NSiguiente.setNSiguiente(n);
     }
 
-
+    public void setNAnterior (Nodo n){
+    	this.NAnterior = n;
+    }
+    
+  
 }

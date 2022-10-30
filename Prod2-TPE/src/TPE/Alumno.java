@@ -16,7 +16,7 @@ public class Alumno {
     private String apellido;
     private int DNI; 
     private int edad; 
-    // lista de palabras
+    private ListaVinculada palabras;
 
     public Alumno(String nombre, String apellido, int DNI, int edad){
         this.nombre = nombre;
@@ -56,4 +56,14 @@ public class Alumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public boolean equals(Object nuevo) {
+    	try {
+    		Alumno Alumnonuevo = (Alumno) nuevo;
+    		return nombre.equals(Alumnonuevo.getNombre());
+    	}catch(Exception e) {
+    		return false;
+    		}
+    }
+
 }

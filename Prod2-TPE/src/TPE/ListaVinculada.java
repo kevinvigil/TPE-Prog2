@@ -1,6 +1,6 @@
 package TPE;
 
-public class List {
+public class ListaVinculada {
 
     private int size;
 
@@ -8,6 +8,12 @@ public class List {
 
     public void addDato (Nodo n){
         size++;
+        if (this.NSiguiente == null)
+        	this.NSiguiente = n;
+        else {
+        	NSiguiente.setNSiguiente(n);
+        }
+        	
     }
 
     public void deleteDato (int pos){
@@ -16,5 +22,6 @@ public class List {
             size--;
         }
     }
-
+    
+ 
 }
