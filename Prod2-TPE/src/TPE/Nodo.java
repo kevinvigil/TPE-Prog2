@@ -30,35 +30,29 @@ public class Nodo {
 
     // a) Insertar un nuevo elemento en la estructura. 
     public void addOrdenado(Nodo n, Comparator h){
-        int i = h.compare(n.valor, valor);
+        int i = h.compare(n.valor, this.valor);
         if (i > 0) {
-            addOrdenado(n, h);
+            NSiguiente.addOrdenado(n, h);
         } else {
-            NAnterior.setNSiguiente(n);
-            NAnterior.NSiguiente.setNAnterior(this.NAnterior);
-            setNAnterior(n);
-            NAnterior.setNSiguiente(this);
+            this.NAnterior.setNSiguiente(n);
+            this.NAnterior.NSiguiente.setNAnterior(this.NAnterior);
+            this.setNAnterior(n);
+            this.NAnterior.setNSiguiente(this);
         }
     }
 
-    public void setNSiguiente (Nodo n){
-    	if (this.NSiguiente == null) {
-    		n.setNAnterior(this);
-    	   	this.NSiguiente = n;
-    	}
-        else
-        	NSiguiente.setNSiguiente(n);
+    public void add (Nodo n){
+        if (this.NSiguiente != null) {
+            this.NSiguiente.add(n);
+        }else{
+            this.setNSiguiente(n);;
+        }
     }
 
     // b) Eliminar un elemento de la estructura dado una posición. 
     public void deleteOnPosition(int pos, int index){
         if (index == pos) {
-            if (this.NSiguiente != null) {
-                delete(this);
-            }else{
-                this.NAnterior.setNSiguiente(null);
-                this.NAnterior = null;
-            }
+            delete(this);
         }else{
             index++;
             NSiguiente.deleteOnPosition(pos, index);
@@ -125,5 +119,9 @@ public class Nodo {
   
     public void setNAnterior (Nodo n){
     	this.NAnterior = n;
+    }
+
+    public void setNSiguiente (Nodo n){
+        this.NSiguiente = n;
     }
 }

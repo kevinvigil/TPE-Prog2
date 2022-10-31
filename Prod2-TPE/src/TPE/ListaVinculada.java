@@ -22,7 +22,7 @@ public class ListaVinculada {
         if (this.NSiguiente == null)
         	this.NSiguiente = n;
         else if (h == null) {
-        	NSiguiente.setNSiguiente(n);
+        	NSiguiente.add(n);
         } else {
             NSiguiente.addOrdenado(n, h);
         }	
