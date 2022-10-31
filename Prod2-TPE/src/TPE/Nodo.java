@@ -124,4 +124,8 @@ public class Nodo {
     public void setNSiguiente (Nodo n){
         this.NSiguiente = n;
     }
+
+    public void setValor(Object valor) {
+        this.valor = valor;
+    }
 }

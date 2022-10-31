@@ -63,7 +63,6 @@ public class Alumno {
     		return nombre.equals(Alumnonuevo.getNombre());
     	}catch(Exception e) {
     		return false;
-    		}
+    	}
     }
-
 }

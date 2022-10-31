@@ -17,15 +17,17 @@ public class ListaVinculada {
     private Nodo NSiguiente;
 
     // a) Insertar un nuevo elemento en la estructura. 
-    public void addDato (Nodo n){
+    public void addDato (Object n){
+        Nodo foo = new Nodo();
+        foo.setValor(foo);
         size++;
         if (this.NSiguiente == null)
-        	this.NSiguiente = n;
+        	this.NSiguiente = foo;
         else if (h == null) {
-        	NSiguiente.add(n);
+        	NSiguiente.add(foo);
         } else {
-            NSiguiente.addOrdenado(n, h);
-        }	
+            NSiguiente.addOrdenado(foo, h);
+        }
     }
 
     // b) Eliminar un elemento de la estructura dado una posición. 
