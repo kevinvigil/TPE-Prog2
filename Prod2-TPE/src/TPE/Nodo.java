@@ -1,9 +1,6 @@
-
 package TPE;
 
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
 
 // Una lista vinculada ordenada es una estructura de datos formada por un conjunto de nodos, 
 // cada uno de los cuales posee un objeto y una referencia al siguiente nodo de la estructura. 
@@ -30,33 +27,27 @@ public class Nodo {
     private Object valor;
 
     public Nodo(){}
-    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
 
-    // d) Obtener la posición de la primera ocurrencia de un elemento dado.
-    public int getPosElemento(Object o, int posActual){
-        int i = 0;
-        if (o.equals(this.valor)) {
-            return i;
-        }
-        if (NSiguiente != null) {
-            posActual ++;
-            return NSiguiente.getPosElemento(o, posActual);
+    // a) Insertar un nuevo elemento en la estructura. 
+    public void addOrdenado(Nodo n, Comparator h){
+        int i = h.compare(n.valor, valor);
+        if (i > 0) {
+            addOrdenado(n, h);
         } else {
-            return -1;
+            NAnterior.setNSiguiente(n);
+            NAnterior.NSiguiente.setNAnterior(this.NAnterior);
+            setNAnterior(n);
+            NAnterior.setNSiguiente(this);
         }
     }
 
-    // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
-    public int deleteTodasOcurrencias (Object o){
-        int i = 0;
-        if (o.equals(this.valor)) {
-            i++;
-            delete(this);
-        }
-        if (NSiguiente != null) {
-            i += NSiguiente.deleteTodasOcurrencias(o);
-        }
-        return i;
+    public void setNSiguiente (Nodo n){
+    	if (this.NSiguiente == null) {
+    		n.setNAnterior(this);
+    	   	this.NSiguiente = n;
+    	}
+        else
+        	NSiguiente.setNSiguiente(n);
     }
 
     // b) Eliminar un elemento de la estructura dado una posición. 
@@ -81,46 +72,46 @@ public class Nodo {
         this.NAnterior = null;
     }
 
-    // a) Insertar un nuevo elemento en la estructura. 
-    public void setNSiguiente (Nodo n){
-    	if (this.NSiguiente == null) {
-    		n.setNAnterior(this);
-    	   	this.NSiguiente = n;
-    	}
-        else
-        	NSiguiente.setNSiguiente(n);
+    // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
+    public int deleteTodasOcurrencias (Object o){
+        int i = 0;
+        if (o.equals(this.valor)) {
+            i++;
+            delete(this);
+        }
+        if (NSiguiente != null) {
+            i += NSiguiente.deleteTodasOcurrencias(o);
+        }
+        return i;
     }
 
-    public void setNAnterior (Nodo n){
-    	this.NAnterior = n;
-    }
-
-    // a) Insertar un nuevo elemento en la estructura. 
-    public void addOrdenado(Nodo n, Comparator h){
-        int i = h.compare(n.valor, valor);
-        if (i > 0) {
-            addOrdenado(n, h);
+    // d) Obtener la posición de la primera ocurrencia de un elemento dado.
+    public int getPosElemento(Object o, int posActual){
+        int i = 0;
+        if (o.equals(this.valor)) {
+            return i;
+        }
+        if (NSiguiente != null) {
+            posActual ++;
+            return NSiguiente.getPosElemento(o, posActual);
         } else {
-            NAnterior.setNSiguiente(n);
-            NAnterior.NSiguiente.setNAnterior(this.NAnterior);
-            setNAnterior(n);
-            NAnterior.setNSiguiente(this);
+            return -1;
         }
     }
 
+    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
 
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void ordenar(int size, Comparator comp, int j){
-        int i = comp.compare(this.valor, this.NSiguiente.valor);
         if (size>j) {
+            int i = comp.compare(this.valor, this.NSiguiente.valor);
             if (i>0) {
                 intercambiar(this, this.NSiguiente);
                 ordenar(size, comp, j++);
             }else{
                 this.NSiguiente.ordenar(size, comp, j++);
             }
-        }
-        
+        } 
     }
 
     public void intercambiar(Nodo n1, Nodo n2){
@@ -132,4 +123,7 @@ public class Nodo {
         n1.setNAnterior(n2);
     }
   
+    public void setNAnterior (Nodo n){
+    	this.NAnterior = n;
+    }
 }
