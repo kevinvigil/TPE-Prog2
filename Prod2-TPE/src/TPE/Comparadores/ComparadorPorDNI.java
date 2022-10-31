@@ -18,5 +18,4 @@ public class ComparadorPorDNI implements Comparator<Alumno>{
         }
         return i;
     }
-    
 }
