@@ -45,7 +45,8 @@ public class Nodo {
         if (this.NSiguiente != null) {
             this.NSiguiente.add(n);
         }else{
-            this.setNSiguiente(n);;
+            this.NSiguiente = n;
+            this.NSiguiente.NAnterior = this;
         }
     }
 
@@ -60,8 +61,19 @@ public class Nodo {
     }
 
     public void delete(Nodo n){
-        this.NAnterior.setNSiguiente(this.NSiguiente);
-        this.NSiguiente.setNAnterior(this.NAnterior);
+        if (this.NAnterior != null) {
+            if (this.NSiguiente!=null) {
+                this.NAnterior.NSiguiente = this.NSiguiente;
+            }else{
+                this.NAnterior.NSiguiente =null;
+            }
+            
+        }
+        
+        
+        if (this.NSiguiente!=null) {
+            this.NSiguiente.NAnterior =this.NAnterior;
+        }
         this.NSiguiente = null;
         this.NAnterior = null;
     }
@@ -73,10 +85,13 @@ public class Nodo {
             i++;
             delete(this);
         }
-        if (NSiguiente != null) {
-            i += NSiguiente.deleteTodasOcurrencias(o);
-        }
+        if (this.NSiguiente != null) {
+            System.out.println("estoy");
+            i += this.NSiguiente.deleteTodasOcurrencias(o);
+        } 
         return i;
+        
+        
     }
 
     // d) Obtener la posición de la primera ocurrencia de un elemento dado.
@@ -127,5 +142,23 @@ public class Nodo {
 
     public void setValor(Object valor) {
         this.valor = valor;
+    }
+
+    public Object getValor() {
+        return valor;
+    }
+
+    public Nodo getNSiguiente() {
+        return NSiguiente;
+    }
+
+    @Override
+    public String toString() {
+        if (this.NSiguiente != null) {
+            return this.valor.toString() + "\n" + this.NSiguiente.toString();
+        }else{
+            return this.valor.toString();
+        }
+        
     }
 }
