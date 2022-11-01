@@ -35,21 +35,22 @@ public class ListaVinculada {
     // b) Eliminar un elemento de la estructura dado una posición. 
     public void deleteDato (int pos){
         if (pos > 0 && size >= pos) {
-            NSiguiente.deleteOnPosition(pos, 0);
+            NSiguiente.getNSiguiente().deleteOnPosition(pos, 1);
             size--;
         }
     }
 
     // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
     public void deleteOcurrencias(Object o){
-        int i = this.NSiguiente.deleteTodasOcurrencias(o);
-        System.out.println("list");
+        int i = this.NSiguiente.getNSiguiente().deleteTodasOcurrencias(o);
         size -= i;
     }
 
     // d) Obtener la posición de la primera ocurrencia de un elemento dado.
     public int posElemento(Object o) {
-        return NSiguiente.getPosElemento(o, 1);
+        int i = NSiguiente.getNSiguiente().getPosElemento(o, 1);
+        System.out.println(i);
+        return i;
     }
 
     // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 

@@ -12,7 +12,7 @@ public class main {
 		foo.addDato(p);
 		foo.addDato(k);
 		foo.addDato(j);
-		foo.deleteOcurrencias(k);
+		foo.posElemento(p);
 		System.out.println(foo.toString());
 		
 

@@ -81,24 +81,24 @@ public class Nodo {
     // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
     public int deleteTodasOcurrencias (Object o){
         int i = 0;
+        Nodo aux = null;
         if (o.equals(this.valor)) {
             i++;
+            aux = this.NSiguiente;
             delete(this);
         }
         if (this.NSiguiente != null) {
-            System.out.println("estoy");
             i += this.NSiguiente.deleteTodasOcurrencias(o);
-        } 
+        }else if(aux != null){
+            i += aux.deleteTodasOcurrencias(o);
+        }
         return i;
-        
-        
     }
 
     // d) Obtener la posición de la primera ocurrencia de un elemento dado.
     public int getPosElemento(Object o, int posActual){
-        int i = 0;
         if (o.equals(this.valor)) {
-            return i;
+            return posActual;
         }
         if (NSiguiente != null) {
             posActual ++;
