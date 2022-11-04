@@ -1,71 +1,69 @@
 package TPE;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 // a) Insertar un nuevo elemento en la estructura. 
-// b) Eliminar un elemento de la estructura dado una posici贸n. 
+// b) Eliminar un elemento de la estructura dado una posicion. 
 // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
-// d) Obtener la posici贸n de la primera ocurrencia de un elemento dado. 
+// d) Obtener la posicion de la primera ocurrencia de un elemento dado. 
 // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
 // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
 
-public class ListaVinculada implements Iterator<Nodo>{
-	private int posicion;
+public class ListaVinculada implements Iterable<Nodo> {
     private int size;
-    private Comparator h;
+    private Comparator criterio;
 
-    private Nodo NSiguiente ;
+    private Nodo NInicio ;
 
-    //coloco comparador en constructor porque pide (ascendente o descendente,seg鷑 el criterio de orden con el que la lista fue creada)
-    public ListaVinculada(Comparator h){
-        NSiguiente = new Nodo();
-        posicion = 0;
-        this.h = h;
-    }
+    public ListaVinculada(){ }
 
     // a) Insertar un nuevo elemento en la estructura. 
     public void addDato (Object n){
-        Nodo foo = new Nodo();
-        foo.setValor(n);
+        Nodo newNodo = new Nodo();
+        newNodo.setValor(n);
         size++;
-        if (h == null) {
-        	NSiguiente.add(foo);
+        if (criterio == null) {
+        	if (NInicio != null)
+        		NInicio.add(newNodo);
+        	else
+        		NInicio = newNodo;
         } else {
-            NSiguiente.addOrdenado(foo, h);
+            NInicio.addOrdenado(newNodo, criterio);
         }
     }
 
     // b) Eliminar un elemento de la estructura dado una posici贸n. 
     public void deleteDato (int pos){
         if (pos > 0 && size >= pos) {
-            NSiguiente.getNSiguiente().deleteOnPosition(pos, 1);
+            NInicio.getNSiguiente().deleteOnPosition(pos, 1);
             size--;
         }
     }
 
     // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
     public void deleteOcurrencias(Object o){
-        int i = this.NSiguiente.getNSiguiente().deleteTodasOcurrencias(o);
+        int i = this.NInicio.getNSiguiente().deleteTodasOcurrencias(o);
         size -= i;
     }
 
-    // d) Obtener la posici贸n de la primera ocurrencia de un elemento dado.
+    // d) Obtener la posicion de la primera ocurrencia de un elemento dado.
     public int posElemento(Object o) {
-        int i = NSiguiente.getNSiguiente().getPosElemento(o, 1);
+        int i = NInicio.getNSiguiente().getPosElemento(o, 1);
         System.out.println(i);
         return i;
     }
 
   
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
-    public void setComparator(Comparator j){
-        this.h = j;
+    public void setComparator(Comparator criterio){
+        this.criterio = criterio;
     }
 
     public void order(){
         int i = size;
         while (i > 1) {
-            this.NSiguiente.ordenar(i, h, 1);
+            this.NInicio.ordenar(i, criterio, 1);
             i--;
         }
     }
@@ -73,31 +71,45 @@ public class ListaVinculada implements Iterator<Nodo>{
     @Override
     public String toString() {
 
-        return NSiguiente.getNSiguiente().toString();
+        return NInicio.getNSiguiente().toString();
     }
 
-    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
-
-    public Iterator<Nodo> Recorrer() {
-       
-       Iterator<Nodo> it= new Iterator<>();
-        while(it.hasNext()) {
-        	
-        }
-			
-        return it;
-    }
-       
-	
-
-	public boolean hasNext() {
-		return posicion < size;
+	@Override
+	public Iterator<Nodo> iterator() {
+		// TODO Auto-generated method stub
+		return new IteratorListVinculada();
 	}
 	
-	
-	public Nodo Next() {
-		posicion++;
-		return NSiguiente.getNSiguiente();
+	protected class IteratorListVinculada implements Iterator<Nodo> {
+
+		protected Nodo nodoIterador;
+		private int pos;
+		
+        public IteratorListVinculada()   
+        { 
+        	this.pos = 0;
+        	this.nodoIterador = NInicio;
+        }
+        
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+	        return (pos == 0 && nodoIterador == null)  || (nodoIterador != null && nodoIterador.getNSiguiente() != null);
+		}
+
+		@Override
+		public Nodo next() {
+			// TODO Auto-generated method stub
+			Nodo next;
+			if (pos == 0)
+				next = this.nodoIterador;
+			else
+				next = this.nodoIterador = this.nodoIterador.getNSiguiente();
+			
+			pos++;
+			return next;
+		}
+		
 	}
 }
 

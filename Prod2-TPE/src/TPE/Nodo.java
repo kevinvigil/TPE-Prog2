@@ -108,13 +108,6 @@ public class Nodo {
         }
     }
 
-    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
-    	
-    public void RecorrerElementos() {
-    	int i;
-    	for(i=0,i)
-    }
-    
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void ordenar(int size, Comparator comp, int j){
         if (size>j) {
