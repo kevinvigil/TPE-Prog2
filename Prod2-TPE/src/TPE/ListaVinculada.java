@@ -9,15 +9,18 @@ import java.util.Comparator;
 // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
 // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
 
-public class ListaVinculada {
-
+public class ListaVinculada implements Iterator<Nodo>{
+	private int posicion;
     private int size;
     private Comparator h;
 
     private Nodo NSiguiente ;
 
-    public ListaVinculada(){
+    //coloco comparador en constructor porque pide (ascendente o descendente,según el criterio de orden con el que la lista fue creada)
+    public ListaVinculada(Comparator h){
         NSiguiente = new Nodo();
+        posicion = 0;
+        this.h = h;
     }
 
     // a) Insertar un nuevo elemento en la estructura. 
@@ -53,8 +56,7 @@ public class ListaVinculada {
         return i;
     }
 
-    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
-
+  
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void setComparator(Comparator j){
         this.h = j;
@@ -73,4 +75,30 @@ public class ListaVinculada {
 
         return NSiguiente.getNSiguiente().toString();
     }
+
+    // e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
+
+    public Iterator<Nodo> Recorrer() {
+       
+       Iterator<Nodo> it= new Iterator<>();
+        while(it.hasNext()) {
+        	
+        }
+			
+        return it;
+    }
+       
+	
+
+	public boolean hasNext() {
+		return posicion < size;
+	}
+	
+	
+	public Nodo Next() {
+		posicion++;
+		return NSiguiente.getNSiguiente();
+	}
 }
+
+
