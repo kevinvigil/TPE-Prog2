@@ -16,21 +16,22 @@ public class ListaVinculada implements Iterable<Nodo> {
 
     private Nodo NInicio ;
 
-    public ListaVinculada(){ }
+    public ListaVinculada(){ 
+        this.NInicio = new Nodo();
+    }
 
     // a) Insertar un nuevo elemento en la estructura. 
     public void addDato (Object n){
         Nodo newNodo = new Nodo();
         newNodo.setValor(n);
         size++;
-        if (criterio == null) {
-        	if (NInicio != null)
-        		NInicio.add(newNodo);
-        	else
-        		NInicio = newNodo;
+        if (criterio == null || NInicio.getNSiguiente() == null) {
+            NInicio.add(newNodo);
         } else {
-            NInicio.addOrdenado(newNodo, criterio);
-        }
+            NInicio.getNSiguiente().addOrdenado(newNodo, criterio);
+        } 
+        
+        
     }
 
     // b) Eliminar un elemento de la estructura dado una posición. 
@@ -50,7 +51,6 @@ public class ListaVinculada implements Iterable<Nodo> {
     // d) Obtener la posicion de la primera ocurrencia de un elemento dado.
     public int posElemento(Object o) {
         int i = NInicio.getNSiguiente().getPosElemento(o, 1);
-        System.out.println(i);
         return i;
     }
 
@@ -63,7 +63,7 @@ public class ListaVinculada implements Iterable<Nodo> {
     public void order(){
         int i = size;
         while (i > 1) {
-            this.NInicio.ordenar(i, criterio, 1);
+            this.NInicio.getNSiguiente().ordenar(i, criterio, 1);
             i--;
         }
     }
@@ -87,7 +87,7 @@ public class ListaVinculada implements Iterable<Nodo> {
 		
         public IteratorListVinculada()   
         { 
-        	this.pos = 0;
+        	this.pos = 1;
         	this.nodoIterador = NInicio;
         }
         

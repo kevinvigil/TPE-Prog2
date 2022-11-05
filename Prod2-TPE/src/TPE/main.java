@@ -1,15 +1,15 @@
-//a) Se cree la lista de números mostrada en la figura del punto 2, con los valores
+//a) Se cree la lista de nï¿½meros mostrada en la figura del punto 2, con los valores
 //insertados en el siguiente orden: 10, 21, 1, 5, 11
 //b) Se recorra la lista creada (utilizando un foreach) y se impriman los valores por consola
-//c) Se elimine el primer elemento de la lista (por posición), luego el elemento “5” y luego
-//el elemento “11” (dado el elemento). Volver a recorrer e imprimir la lista resultante.
+//c) Se elimine el primer elemento de la lista (por posiciï¿½n), luego el elemento ï¿½5ï¿½ y luego
+//el elemento ï¿½11ï¿½ (dado el elemento). Volver a recorrer e imprimir la lista resultante.
 //d) Se cree la lista de strings mostrada en la figura 2 del punto 1, con los valores
-//insertados en el siguiente orden: “Fácil”, “Es”, “Parcial”, “Prog 2”.
+//insertados en el siguiente orden: ï¿½Fï¿½cilï¿½, ï¿½Esï¿½, ï¿½Parcialï¿½, ï¿½Prog 2ï¿½.
 //e) Se recorra la lista creada y se impriman los valores por consola
-//f) Imprimir por consola en qué posición se encuentra la palabra “Parcial”.
-//g) Imprimir por consola en qué posición se encuentra la palabra “Recuperatorio”
+//f) Imprimir por consola en quï¿½ posiciï¿½n se encuentra la palabra ï¿½Parcialï¿½.
+//g) Imprimir por consola en quï¿½ posiciï¿½n se encuentra la palabra ï¿½Recuperatorioï¿½
 //h) Se cambie el orden de la lista de strings para que los elementos queden ordenados descendentemente.
-//i) Implementar las siguientes dos estructuras e insértelas en una lista vinculada
+//i) Implementar las siguientes dos estructuras e insï¿½rtelas en una lista vinculada
 //ordenadas por cantidad total de alumnos (de mayor a menor)
 
 
@@ -17,6 +17,7 @@
 package TPE;
 
 
+import TPE.Comparadores.ComparadorPorApellido;
 import TPE.Comparadores.ComparadorPorNombre;
 import java.util.Iterator;
 
@@ -24,54 +25,59 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Test Iterador...\n"); 
-		try {
-			ListaVinculada listaNumeros = new ListaVinculada();
+		// System.out.println("Test Iterador...\n"); 
+		// try {
+		// 	ListaVinculada listaNumeros = new ListaVinculada();
 			
-			int uno = 1;
-			int cinco = 5;
-			int diez = 10;
-			int once = 11;
-			int veintiUno = 21;
+		// 	int uno = 1;
+		// 	int cinco = 5;
+		// 	int diez = 10;
+		// 	int once = 11;
+		// 	int veintiUno = 21;
 			
-			listaNumeros.addDato(diez);
-			listaNumeros.addDato(veintiUno);
-			listaNumeros.addDato(uno);					//incompleto
-			listaNumeros.addDato(cinco);
-			listaNumeros.addDato(once);
+		// 	listaNumeros.addDato(diez);
+		// 	listaNumeros.addDato(veintiUno);
+		// 	listaNumeros.addDato(uno);					//incompleto
+		// 	listaNumeros.addDato(cinco);
+		// 	listaNumeros.addDato(once);
 			
-			
-			ListaVinculada lista = new ListaVinculada();
+		// 	ListaVinculada lista = new ListaVinculada();
 		
-			String a ="Es";
-			String b ="Facil";
-			String c ="Parcial";
-			String d = "Prog 2";
-			lista.addDato(b);
-			lista.addDato(a);
-			lista.addDato(c);
-			lista.addDato(d);
+		// 	String a ="Es";
+		// 	String b ="Facil";
+		// 	String c ="Parcial";
+		// 	String d = "Prog 2";
+		// 	lista.addDato(b);
+		// 	lista.addDato(a);
+		// 	lista.addDato(c);
+		// 	lista.addDato(d);
 			
-			Iterator<Nodo> it = lista.iterator();
+		// 	Iterator<Nodo> it = lista.iterator();
 			
-			while(it.hasNext()) {
-				System.out.println(it.next().getValor());
-			}
-		}
-		catch(Exception ex) {
-			System.out.println("Fallo Test!! \n Error: "+ ex.getMessage()); 
-		}
+		// 	while(it.hasNext()) {
+		// 		System.out.println(it.next().getValor());
+		// 	}
+		// }
+		// catch(Exception ex) {
+		// 	System.out.println("Fallo Test!! \n Error: "+ ex.getMessage()); 
+		// }
 		
-		System.out.println("\nTest Alumnos...\n"); 
+		// System.out.println("\nTest Alumnos...\n"); 
 		
 		try {
 			ListaVinculada listaAlumnos = new ListaVinculada();
 			Iterator<Nodo> itAlumno = listaAlumnos.iterator();
 			listaAlumnos.setComparator(new ComparadorPorNombre());
-			listaAlumnos.addDato(new Alumno("Camila", "Rodriguez", 38270192, 19));
-			listaAlumnos.addDato(new Alumno("Rocio", "Rodriguez", 38270192, 19));
+			Alumno j = new Alumno("Albano", "Rodriguez", 38270192, 19);
+			listaAlumnos.addDato(new Alumno("Camila", "Abarez", 38270192, 19));
+			listaAlumnos.addDato(new Alumno("Rocio", "Tito", 38270192, 19));
 			listaAlumnos.addDato(new Alumno("Albano", "Rodriguez", 38270192, 19));
+			ComparadorPorApellido t = new ComparadorPorApellido();
 			
+			// for (Nodo nodo : listaAlumnos) {
+			// 	System.out.println("Alumnos ="+ nodo);
+			// }
+
 			while(itAlumno.hasNext()) {
 				System.out.println(((Alumno)itAlumno.next().getValor()).getNombre());
 			}

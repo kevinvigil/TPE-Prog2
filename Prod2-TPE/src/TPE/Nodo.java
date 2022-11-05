@@ -32,7 +32,11 @@ public class Nodo {
     public void addOrdenado(Nodo n, Comparator<Object> criterio){
         int i = criterio.compare(n.valor, this.valor);
         if (i > 0) {
-            NSiguiente.addOrdenado(n, criterio);
+            if (NSiguiente == null) {
+                add(n);
+            }else{
+                NSiguiente.addOrdenado(n, criterio);
+            }
         } else {
             this.NAnterior.setNSiguiente(n);
             this.NAnterior.NSiguiente.setNAnterior(this.NAnterior);
@@ -111,23 +115,32 @@ public class Nodo {
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void ordenar(int size, Comparator criterio, int j){
         if (size>j) {
-            int i = criterio.compare(this.valor, this.NSiguiente.valor);
-            if (i>0) {
-                intercambiar(this, this.NSiguiente);
-                ordenar(size, criterio, j++);
-            }else{
-                this.NSiguiente.ordenar(size, criterio, j++);
+            if (this.NSiguiente != null) {
+                int i = criterio.compare(this.valor, this.NSiguiente.valor);
+                if (i>0) {
+                    intercambiar(this, this.NSiguiente);
+                    ordenar(size, criterio, j++);
+                }else{
+                    this.NSiguiente.ordenar(size, criterio, j++);
+                }
             }
+            
         } 
     }
 
     public void intercambiar(Nodo n1, Nodo n2){
-        n2.NSiguiente.setNAnterior(n1);
-        n2.NAnterior.NAnterior.setNSiguiente(n2);
+        if (n2.NSiguiente != null) {
+            n2.NSiguiente.setNAnterior(n1);
+            n1.setNSiguiente(n2.NSiguiente);
+        } else{
+            n1.setNSiguiente(null);
+        }
+        
         n2.setNAnterior(n1.NAnterior);
-        n1.setNSiguiente(n2.NSiguiente);
         n2.setNSiguiente(n1);
+        n2.NAnterior.setNSiguiente(n2);
         n1.setNAnterior(n2);
+        
     }
   
     public void setNAnterior (Nodo n){
@@ -152,11 +165,6 @@ public class Nodo {
 
     @Override
     public String toString() {
-        if (this.NSiguiente != null) {
-            return this.valor.toString() + "\n" + this.NSiguiente.toString();
-        }else{
-            return this.valor.toString();
-        }
-        
+        return this.valor.toString();
     }
 }

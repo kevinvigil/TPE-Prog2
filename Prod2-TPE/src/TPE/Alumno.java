@@ -65,4 +65,10 @@ public class Alumno {
     		return false;
     	}
     }
+
+    @Override
+    public String toString() {
+        
+        return nombre;
+    }
 }
