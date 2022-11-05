@@ -29,10 +29,10 @@ public class Nodo {
     public Nodo(){}
 
     // a) Insertar un nuevo elemento en la estructura. 
-    public void addOrdenado(Nodo n, Comparator h){
-        int i = h.compare(n.valor, this.valor);
+    public void addOrdenado(Nodo n, Comparator<Object> criterio){
+        int i = criterio.compare(n.valor, this.valor);
         if (i > 0) {
-            NSiguiente.addOrdenado(n, h);
+            NSiguiente.addOrdenado(n, criterio);
         } else {
             this.NAnterior.setNSiguiente(n);
             this.NAnterior.NSiguiente.setNAnterior(this.NAnterior);
@@ -109,14 +109,14 @@ public class Nodo {
     }
 
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
-    public void ordenar(int size, Comparator comp, int j){
+    public void ordenar(int size, Comparator criterio, int j){
         if (size>j) {
-            int i = comp.compare(this.valor, this.NSiguiente.valor);
+            int i = criterio.compare(this.valor, this.NSiguiente.valor);
             if (i>0) {
                 intercambiar(this, this.NSiguiente);
-                ordenar(size, comp, j++);
+                ordenar(size, criterio, j++);
             }else{
-                this.NSiguiente.ordenar(size, comp, j++);
+                this.NSiguiente.ordenar(size, criterio, j++);
             }
         } 
     }

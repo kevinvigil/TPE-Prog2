@@ -1,3 +1,19 @@
+//a) Se cree la lista de números mostrada en la figura del punto 2, con los valores
+//insertados en el siguiente orden: 10, 21, 1, 5, 11
+//b) Se recorra la lista creada (utilizando un foreach) y se impriman los valores por consola
+//c) Se elimine el primer elemento de la lista (por posición), luego el elemento “5” y luego
+//el elemento “11” (dado el elemento). Volver a recorrer e imprimir la lista resultante.
+//d) Se cree la lista de strings mostrada en la figura 2 del punto 1, con los valores
+//insertados en el siguiente orden: “Fácil”, “Es”, “Parcial”, “Prog 2”.
+//e) Se recorra la lista creada y se impriman los valores por consola
+//f) Imprimir por consola en qué posición se encuentra la palabra “Parcial”.
+//g) Imprimir por consola en qué posición se encuentra la palabra “Recuperatorio”
+//h) Se cambie el orden de la lista de strings para que los elementos queden ordenados descendentemente.
+//i) Implementar las siguientes dos estructuras e insértelas en una lista vinculada
+//ordenadas por cantidad total de alumnos (de mayor a menor)
+
+
+
 package TPE;
 
 
@@ -10,14 +26,31 @@ public class main {
 		
 		System.out.println("Test Iterador...\n"); 
 		try {
+			ListaVinculada listaNumeros = new ListaVinculada();
+			
+			int uno = 1;
+			int cinco = 5;
+			int diez = 10;
+			int once = 11;
+			int veintiUno = 21;
+			
+			listaNumeros.addDato(diez);
+			listaNumeros.addDato(veintiUno);
+			listaNumeros.addDato(uno);					//incompleto
+			listaNumeros.addDato(cinco);
+			listaNumeros.addDato(once);
+			
+			
 			ListaVinculada lista = new ListaVinculada();
 		
-			String a ="Albano";
-			String b ="Bautista";
-			String c ="Camila";
+			String a ="Es";
+			String b ="Facil";
+			String c ="Parcial";
+			String d = "Prog 2";
 			lista.addDato(b);
-			lista.addDato(c);
 			lista.addDato(a);
+			lista.addDato(c);
+			lista.addDato(d);
 			
 			Iterator<Nodo> it = lista.iterator();
 			
