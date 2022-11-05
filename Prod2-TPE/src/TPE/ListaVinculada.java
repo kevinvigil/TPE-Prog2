@@ -20,18 +20,22 @@ public class ListaVinculada implements Iterable<Nodo> {
         this.NInicio = new Nodo();
     }
 
+    public ListaVinculada(Comparator c){ 
+        this.NInicio = new Nodo();
+        this.criterio = c;
+    }
+
     // a) Insertar un nuevo elemento en la estructura. 
     public void addDato (Object n){
         Nodo newNodo = new Nodo();
         newNodo.setValor(n);
         size++;
-        if (criterio == null || NInicio.getNSiguiente() == null) {
-            NInicio.add(newNodo);
+        if ( NInicio.getNSiguiente() == null) {
+            NInicio.setNSiguiente(newNodo);
+            newNodo.setNAnterior(NInicio);
         } else {
             NInicio.getNSiguiente().addOrdenado(newNodo, criterio);
-        } 
-        
-        
+        }  
     }
 
     // b) Eliminar un elemento de la estructura dado una posición. 

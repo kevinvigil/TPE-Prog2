@@ -24,7 +24,7 @@ public class Nodo {
     private Nodo NAnterior;
     private Nodo NSiguiente;
 
-    private Object valor;
+    private Object  valor;
 
     public Nodo(){}
 
@@ -33,7 +33,8 @@ public class Nodo {
         int i = criterio.compare(n.valor, this.valor);
         if (i > 0) {
             if (NSiguiente == null) {
-                add(n);
+                this.NSiguiente = n;
+                this.NSiguiente.NAnterior = this;
             }else{
                 NSiguiente.addOrdenado(n, criterio);
             }
