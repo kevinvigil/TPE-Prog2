@@ -11,7 +11,7 @@ package TPE;
 // en Java la clase Alumno, con todas las características necesarias para poder agregar a los mismos 
 // a una lista vinculada.
 
-public class Alumno {
+public class Alumno extends GrupoAbstracto{
     private String nombre;
     private String apellido;
     private int DNI; 
@@ -71,4 +71,10 @@ public class Alumno {
         
         return nombre;
     }
+
+	@Override
+	public int getcantidad() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
 }
