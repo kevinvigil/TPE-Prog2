@@ -4,16 +4,17 @@ import java.util.Comparator;
 
 import TPE.Alumno;
 
-public class ComparadorNot implements Comparator<Alumno>{
+public class ComparadorNot implements Comparator{
 
-    private Comparator<Alumno> comparador;
+    private Comparator comparador;
 	
-	public ComparadorNot(Comparator<Alumno> comparador) {
+	public ComparadorNot(Comparator comparador) {
 		this.comparador = comparador;
 	}
 
 	@Override
-	public int compare(Alumno a1, Alumno a2) {
-		return - this.comparador.compare(a1, a2);
+	public int compare(Object o1, Object o2) {
+		return - this.comparador.compare(o1, o2);
+		
 	}
 }

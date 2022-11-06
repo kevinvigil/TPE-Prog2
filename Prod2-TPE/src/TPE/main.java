@@ -18,6 +18,7 @@ package TPE;
 
 
 import TPE.Comparadores.ComparadorInteger;
+import TPE.Comparadores.ComparadorNot;
 import TPE.Comparadores.ComparadorPorApellido;
 import TPE.Comparadores.ComparadorPorNombre;
 import TPE.Comparadores.ComparadorString;
@@ -66,8 +67,8 @@ public class main {
 			//d) Se cree la lista de strings mostrada en la figura 2 del punto 1, con los valores
 			//insertados en el siguiente orden: �F�cil�, �Es�, �Parcial�, �Prog 2�.
 
-			ComparadorString j = new ComparadorString();
-			ListaVinculada listaString = new ListaVinculada(j);
+			ComparadorString compString = new ComparadorString();
+			ListaVinculada listaString = new ListaVinculada(compString);
 		
 			String a ="Es";
 			String b ="Facil";
@@ -99,8 +100,19 @@ public class main {
 			// }
 
 			//h) Se cambie el orden de la lista de strings para que los elementos queden ordenados descendentemente.
+
+			ComparadorNot not = new ComparadorNot(compString);
+			listaString.setComparator(not);
+			listaString.order();
+
+			for (Nodo nodo : listaString) {
+				System.out.println("String = "+ nodo);
+			}
+
 			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
 			//ordenadas por cantidad total de alumnos (de mayor a menor)
+
+
 		}
 		catch(Exception ex) {
 			System.out.println("Fallo Test!! \n Error: "+ ex.getMessage()); 
