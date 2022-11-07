@@ -128,19 +128,20 @@ public class main {
 			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
 			//ordenadas por cantidad total de alumnos (de mayor a menor)
 
-			// NO ESTA PROBADO
+			System.out.println("\nTest Unicen...\n"); 
+			
 			ComparadorPorCantidad compCant = new ComparadorPorCantidad();
 			Grupo unicen = new Grupo("unicen", compCant);
-				Alumno John = new Alumno("John", "Doe", 1200000, 0);
+				Alumno John = new Alumno("John", "Doe", 35999888, 21);
 				Grupo exactas = new Grupo("exactas", compCant);
-					Alumno Federico = new Alumno("Federico", "Lopez", 35999888, 0);
-					Alumno Juana = new Alumno("Juana", "Garcia", 27123455, 0);
+					Alumno Federico = new Alumno("Federico", "Lopez", 35999888, 22);
+					Alumno Juana = new Alumno("Juana", "Garcia", 27123455, 18);
 				Grupo humanas = new Grupo("humanas", compCant);
-					Alumno Mora = new Alumno("Mora", "Diaz", 37124425, 0);
+					Alumno Mora = new Alumno("Mora", "Diaz", 37124425, 25);
 					Grupo historia = new Grupo("historia", compCant);
-						Alumno Flora = new Alumno("Flora", "Rivas", 34555111, 0);
-						Alumno Martin = new Alumno("Martin", "Gomez", 34111222, 0);
-						Alumno Roman = new Alumno("Roman", "Bazan", 32555111, 0);
+						Alumno Flora = new Alumno("Flora", "Rivas", 34555111, 18);
+						Alumno Martin = new Alumno("Martin", "Gomez", 34111222, 19);
+						Alumno Roman = new Alumno("Roman", "Bazan", 32555111, 27);
 			historia.AddElemento(Flora);
 			historia.AddElemento(Martin);
 			historia.AddElemento(Roman);
@@ -154,6 +155,8 @@ public class main {
 			unicen.AddElemento(John);
 			unicen.AddElemento(exactas);
 			unicen.AddElemento(humanas);
+			
+			unicen.Print();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

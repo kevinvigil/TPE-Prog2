@@ -4,16 +4,18 @@ public abstract class GrupoAbstracto implements Comparable{
 
 	private String nombre;
 
-	public GrupoAbstracto(String n){
-		this.nombre = n;
+	public GrupoAbstracto(String nombre){
+		this.nombre = nombre;
 	}
 
 	public abstract int getCantidad();
+	
+	public abstract void Print();
 
 	@Override
 	public int compareTo(Object o) {
-		GrupoAbstracto j = (GrupoAbstracto) o;
-		return this.getCantidad() - j.getCantidad();
+		GrupoAbstracto grupo = (GrupoAbstracto) o;
+		return grupo.getCantidad() - this.getCantidad();
 	}
 
 	public String getNombre() {

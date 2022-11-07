@@ -6,9 +6,9 @@ public class Grupo extends GrupoAbstracto{
 
 	private ListaVinculada grupos;
 	
-	public Grupo(String n,Comparator c) {
-		super(n);
-		grupos = new ListaVinculada(c);
+	public Grupo(String nombre,Comparator comparador) {
+		super(nombre);
+		grupos = new ListaVinculada(comparador);
 	}
 
 
@@ -24,5 +24,19 @@ public class Grupo extends GrupoAbstracto{
 
 	public void AddElemento(GrupoAbstracto grupo) {
 		grupos.addDato(grupo);
+	}
+
+
+	@Override
+	public void Print() {
+		// TODO Auto-generated method stub
+		System.out.println("Grupo: "+ this.getNombre()+ "/ "+ this.getCantidad());
+		for(Nodo nodo : grupos) {
+			GrupoAbstracto grupo = (GrupoAbstracto)nodo.getValor();
+			grupo.Print();
+		}
+		
+		
+		System.out.println("############################################## \n");
 	}
 }

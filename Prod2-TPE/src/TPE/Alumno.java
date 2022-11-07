@@ -15,17 +15,18 @@ public class Alumno extends GrupoAbstracto{
     private String apellido;
     private int DNI; 
     private int edad; 
-    private ListaVinculada palabras = new ListaVinculada(null);
+    private ListaVinculada palabras;
 
     public Alumno(String nombre, String apellido, int DNI, int edad){
         super(nombre);
         this.apellido = apellido;
         this.DNI = DNI;
         this.edad = edad;
+        palabras =  new ListaVinculada(null);
     }
 
-    public void addPalabras(String s){
-        palabras.addDato(s);
+    public void addPalabras(String palabra){
+        palabras.addDato(palabra);
     }
 
     public String getApellido() {
@@ -70,4 +71,10 @@ public class Alumno extends GrupoAbstracto{
     public int getCantidad() {
         return 1;
     }
+
+	@Override
+	public void Print() {
+		// TODO Auto-generated method stub
+		System.out.println("Alumno: \n" + this.getApellido() + ", " + super.getNombre() + "\n" + this.DNI + "\n" + this.edad);
+	}
 }
