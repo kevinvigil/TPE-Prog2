@@ -1,8 +1,6 @@
-package TPE.Comparadores;
+package TPE.Comparadores.compLogicos;
 
 import java.util.Comparator;
-
-import TPE.Alumno;
 
 public class ComparadorNot implements Comparator{
 

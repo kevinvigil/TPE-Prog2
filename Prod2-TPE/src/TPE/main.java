@@ -11,17 +11,13 @@
 //h) Se cambie el orden de la lista de strings para que los elementos queden ordenados descendentemente.
 //i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
 //ordenadas por cantidad total de alumnos (de mayor a menor)
-
-
-
 package TPE;
 
-
-import TPE.Comparadores.ComparadorInteger;
-import TPE.Comparadores.ComparadorNot;
-import TPE.Comparadores.ComparadorPorApellido;
-import TPE.Comparadores.ComparadorPorNombre;
-import TPE.Comparadores.ComparadorString;
+import TPE.Comparadores.compAlumnosYGrupos.ComparadorPorCantidad;
+import TPE.Comparadores.compAlumnosYGrupos.ComparadorPorNombre;
+import TPE.Comparadores.compLogicos.ComparadorNot;
+import TPE.Comparadores.compOfType.ComparadorInteger;
+import TPE.Comparadores.compOfType.ComparadorString;
 
 import java.util.Iterator;
 
@@ -92,12 +88,6 @@ public class main {
 			//g) Imprimir por consola en qu� posici�n se encuentra la palabra �Recuperatorio�
 
 			System.out.println("Recuperatorio = "+listaString.posElemento("Recuperatorio"));
-			
-			// Iterator<Nodo> it = lista.iterator();
-			
-			// while(it.hasNext()) {
-			// 	System.out.println(it.next().getValor());
-			// }
 
 			//h) Se cambie el orden de la lista de strings para que los elementos queden ordenados descendentemente.
 
@@ -108,11 +98,6 @@ public class main {
 			for (Nodo nodo : listaString) {
 				System.out.println("String = "+ nodo);
 			}
-
-			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
-			//ordenadas por cantidad total de alumnos (de mayor a menor)
-
-
 		}
 		catch(Exception ex) {
 			System.out.println("Fallo Test!! \n Error: "+ ex.getMessage()); 
@@ -123,11 +108,9 @@ public class main {
 		try {
 			ListaVinculada listaAlumnos = new ListaVinculada(new ComparadorPorNombre());
 			Iterator<Nodo> itAlumno = listaAlumnos.iterator();
-			Alumno j = new Alumno("Albano", "Rodriguez", 38270192, 19);
 			listaAlumnos.addDato(new Alumno("Camila", "Abarez", 38270192, 19));
 			listaAlumnos.addDato(new Alumno("Rocio", "Tito", 38270192, 19));
 			listaAlumnos.addDato(new Alumno("Albano", "Rodriguez", 38270192, 19));
-			ComparadorPorApellido t = new ComparadorPorApellido();
 			
 			// for (Nodo nodo : listaAlumnos) {
 			// 	System.out.println("Alumnos ="+ nodo);
@@ -139,6 +122,40 @@ public class main {
 		}
 		catch(Exception ex) {
 			System.out.println("Fallo Test!! \nError: "+ ex); 
+		}
+
+		try {
+			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
+			//ordenadas por cantidad total de alumnos (de mayor a menor)
+
+			// NO ESTA PROBADO
+			ComparadorPorCantidad compCant = new ComparadorPorCantidad();
+			Grupo unicen = new Grupo("unicen", compCant);
+				Alumno John = new Alumno("John", "Doe", 1200000, 0);
+				Grupo exactas = new Grupo("exactas", compCant);
+					Alumno Federico = new Alumno("Federico", "Lopez", 35999888, 0);
+					Alumno Juana = new Alumno("Juana", "Garcia", 27123455, 0);
+				Grupo humanas = new Grupo("humanas", compCant);
+					Alumno Mora = new Alumno("Mora", "Diaz", 37124425, 0);
+					Grupo historia = new Grupo("historia", compCant);
+						Alumno Flora = new Alumno("Flora", "Rivas", 34555111, 0);
+						Alumno Martin = new Alumno("Martin", "Gomez", 34111222, 0);
+						Alumno Roman = new Alumno("Roman", "Bazan", 32555111, 0);
+			historia.AddElemento(Flora);
+			historia.AddElemento(Martin);
+			historia.AddElemento(Roman);
+
+			humanas.AddElemento(Mora);
+			humanas.AddElemento(historia);
+
+			exactas.AddElemento(Federico);
+			exactas.AddElemento(Juana);
+
+			unicen.AddElemento(John);
+			unicen.AddElemento(exactas);
+			unicen.AddElemento(humanas);
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
 	}

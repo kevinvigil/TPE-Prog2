@@ -12,17 +12,20 @@ package TPE;
 // a una lista vinculada.
 
 public class Alumno extends GrupoAbstracto{
-    private String nombre;
     private String apellido;
     private int DNI; 
     private int edad; 
-    private ListaVinculada palabras;
+    private ListaVinculada palabras = new ListaVinculada(null);
 
     public Alumno(String nombre, String apellido, int DNI, int edad){
-        this.nombre = nombre;
+        super(nombre);
         this.apellido = apellido;
         this.DNI = DNI;
         this.edad = edad;
+    }
+
+    public void addPalabras(String s){
+        palabras.addDato(s);
     }
 
     public String getApellido() {
@@ -35,10 +38,6 @@ public class Alumno extends GrupoAbstracto{
 
     public int getEdad() {
         return edad;
-    }
-    
-    public String getNombre() {
-        return nombre;
     }
 
     public void setApellido(String apellido) {
@@ -53,14 +52,10 @@ public class Alumno extends GrupoAbstracto{
         this.edad = edad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
     public boolean equals(Object nuevo) {
     	try {
     		Alumno Alumnonuevo = (Alumno) nuevo;
-    		return nombre.equals(Alumnonuevo.getNombre());
+    		return super.getNombre().equals(Alumnonuevo.getNombre());
     	}catch(Exception e) {
     		return false;
     	}
@@ -68,13 +63,11 @@ public class Alumno extends GrupoAbstracto{
 
     @Override
     public String toString() {
-        
-        return nombre;
+        return super.getNombre();
     }
 
-	@Override
-	public int getcantidad() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
+    @Override
+    public int getCantidad() {
+        return 1;
+    }
 }

@@ -1,13 +1,14 @@
 package TPE;
 
+import java.util.Comparator;
+
 public class Grupo extends GrupoAbstracto{
 
 	private ListaVinculada grupos;
 	
-	
-	public Grupo() {
-		super();
-		grupos = new ListaVinculada();
+	public Grupo(String n,Comparator c) {
+		super(n);
+		grupos = new ListaVinculada(c);
 	}
 
 

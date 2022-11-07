@@ -3,22 +3,15 @@ package TPE;
 import java.util.Comparator;
 import java.util.Iterator;
 
-// a) Insertar un nuevo elemento en la estructura. 
-// b) Eliminar un elemento de la estructura dado una posicion. 
-// c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
-// d) Obtener la posicion de la primera ocurrencia de un elemento dado. 
-// e) Un mecanismo que permita recorrer uno a uno los elementos de la lista. 
-// f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
-
 public class ListaVinculada implements Iterable<Nodo> {
     private int size;
     private Comparator criterio;
 
     private Nodo NInicio ;
 
-    public ListaVinculada(){ 
-        this.NInicio = new Nodo();
-    }
+    // public ListaVinculada(){ 
+    //     this.NInicio = new Nodo();
+    // }
 
     public ListaVinculada(Comparator c){ 
         this.NInicio = new Nodo();
@@ -72,9 +65,12 @@ public class ListaVinculada implements Iterable<Nodo> {
         }
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
     @Override
     public String toString() {
-
         return NInicio.getNSiguiente().toString();
     }
 

@@ -1,4 +1,4 @@
-package TPE.Comparadores;
+package TPE.Comparadores.compOfType;
 
 import java.util.Comparator;
 
