@@ -133,15 +133,32 @@ public class main {
 			ComparadorPorCantidad compCant = new ComparadorPorCantidad();
 			Grupo unicen = new Grupo("unicen", compCant);
 				Alumno John = new Alumno("John", "Doe", 35999888, 21);
+					John.addPalabras("intercambio");
 				Grupo exactas = new Grupo("exactas", compCant);
 					Alumno Federico = new Alumno("Federico", "Lopez", 35999888, 22);
+						Federico.addPalabras("redes");
+						Federico.addPalabras("php");
+						Federico.addPalabras("java");
+						Federico.addPalabras("Pyton");
 					Alumno Juana = new Alumno("Juana", "Garcia", 27123455, 18);
+						Juana.addPalabras("programacion");
+						Juana.addPalabras("php");
+						Juana.addPalabras("java");
 				Grupo humanas = new Grupo("humanas", compCant);
 					Alumno Mora = new Alumno("Mora", "Diaz", 37124425, 25);
+						Mora.addPalabras("psicologia");
+						Mora.addPalabras("Freud");
 					Grupo historia = new Grupo("historia", compCant);
 						Alumno Flora = new Alumno("Flora", "Rivas", 34555111, 18);
+							Flora.addPalabras("historia");
+							Flora.addPalabras("antigua");
 						Alumno Martin = new Alumno("Martin", "Gomez", 34111222, 19);
+							Martin.addPalabras("romanos");
+							Martin.addPalabras("egipcio");
+							Martin.addPalabras("griegos");
 						Alumno Roman = new Alumno("Roman", "Bazan", 32555111, 27);
+							Roman.addPalabras("argentina");
+							
 			historia.AddElemento(Flora);
 			historia.AddElemento(Martin);
 			historia.AddElemento(Roman);
@@ -157,6 +174,37 @@ public class main {
 			unicen.AddElemento(humanas);
 			
 			unicen.Print();
+			
+			
+			Grupo OlimpiadasMatematicas = new Grupo ("OlimpiadasMatematicas", compCant);
+			
+				Grupo Mateados = new Grupo ("Mateados", compCant);
+					Alumno Juan = new Alumno ("Juan", "Juarez", 33222444, 24);
+						Juan.addPalabras("sucesiones");
+						Juan.addPalabras("algebra");
+					Alumno Julio = new Alumno ("Julio", "Cesar", 33222111, 28);
+						Julio.addPalabras("sucesiones");
+						Julio.addPalabras("algebra");
+				Grupo LosFibo = new Grupo ("LosFibo", compCant);
+					Alumno Bernardino = new Alumno ("Bernardino", "Rivas", 30987654, 21);
+						Bernardino.addPalabras("matematicas");
+					Alumno Jose = new Alumno ("Jose", "Paso", 33322112, 19);
+						Jose.addPalabras("problemas");
+					Alumno Isaac = new Alumno ("Isaac", "Newton", 12343565, 30);
+						Isaac.addPalabras("sucesiones");
+					
+			LosFibo.AddElemento(Bernardino);
+			LosFibo.AddElemento(Jose);
+			LosFibo.AddElemento(Isaac);
+			
+			Mateados.AddElemento(Julio);
+			Mateados.AddElemento(Juan);
+			
+			OlimpiadasMatematicas.AddElemento(Mateados);
+			OlimpiadasMatematicas.AddElemento(LosFibo);
+			
+			OlimpiadasMatematicas.Print();
+					
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

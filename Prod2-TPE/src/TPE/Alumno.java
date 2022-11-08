@@ -72,9 +72,14 @@ public class Alumno extends GrupoAbstracto{
         return 1;
     }
 
+    //ESTA INCOMPLETO
+    public String getPalabras() {
+   
+    }
+    
 	@Override
 	public void Print() {
 		// TODO Auto-generated method stub
-		System.out.println("Alumno: \n" + this.getApellido() + ", " + super.getNombre() + "\n" + this.DNI + "\n" + this.edad);
+		System.out.println("Alumno: \n" + this.getApellido() + ", " + super.getNombre() + "\n" + this.DNI + "\n" + this.edad + "\n" + this.getPalabras());
 	}
 }

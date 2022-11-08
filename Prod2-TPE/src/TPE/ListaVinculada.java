@@ -9,13 +9,9 @@ public class ListaVinculada implements Iterable<Nodo> {
 
     private Nodo NInicio ;
 
-    // public ListaVinculada(){ 
-    //     this.NInicio = new Nodo();
-    // }
-
-    public ListaVinculada(Comparator c){ 
+    public ListaVinculada(Comparator comparador){ 
         this.NInicio = new Nodo();
-        this.criterio = c;
+        this.criterio = comparador;
     }
 
     // a) Insertar un nuevo elemento en la estructura. 

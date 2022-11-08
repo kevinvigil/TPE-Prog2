@@ -36,7 +36,6 @@ public class Grupo extends GrupoAbstracto{
 			grupo.Print();
 		}
 		
-		
 		System.out.println("############################################## \n");
 	}
 }

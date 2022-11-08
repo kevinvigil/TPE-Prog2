@@ -9,7 +9,6 @@ public abstract class GrupoAbstracto implements Comparable{
 	}
 
 	public abstract int getCantidad();
-	
 	public abstract void Print();
 
 	@Override
