@@ -75,6 +75,11 @@ public class Alumno extends GrupoAbstracto{
     //ESTA INCOMPLETO
     public String getPalabras() {
    
+    	String cadena = "Palabras: ";
+    	for(Nodo nodo : palabras) {
+    		cadena += (String)nodo.getValor() + " / ";
+    	}
+    	return cadena;
     }
     
 	@Override

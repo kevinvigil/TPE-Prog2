@@ -46,14 +46,14 @@ public class Nodo {
         }
     }
 
-    // public void add (Nodo n){
-    //     if (this.NSiguiente != null) {
-    //         this.NSiguiente.add(n);
-    //     }else{
-    //         this.NSiguiente = n;
-    //         this.NSiguiente.NAnterior = this;
-    //     }
-    // }
+     public void add (Nodo n){
+         if (this.NSiguiente != null) {
+             this.NSiguiente.add(n);
+        }else{
+            this.NSiguiente = n;
+             this.NSiguiente.NAnterior = this;
+         }
+    }
 
     // b) Eliminar un elemento de la estructura dado una posición. 
     public void deleteOnPosition(int pos, int index){

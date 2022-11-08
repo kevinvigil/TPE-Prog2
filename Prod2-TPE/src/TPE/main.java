@@ -24,7 +24,7 @@ import java.util.Iterator;
 public class main {
 
 	public static void main(String[] args) {
-		
+		/*
 		System.out.println("Test Iterador...\n"); 
 		try {
 			ComparadorInteger l = new ComparadorInteger();
@@ -123,7 +123,7 @@ public class main {
 		catch(Exception ex) {
 			System.out.println("Fallo Test!! \nError: "+ ex); 
 		}
-
+*/
 		try {
 			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
 			//ordenadas por cantidad total de alumnos (de mayor a menor)
@@ -173,6 +173,8 @@ public class main {
 			unicen.AddElemento(exactas);
 			unicen.AddElemento(humanas);
 			
+			
+			System.out.println("\nImprimiendo...\n"); 
 			unicen.Print();
 			
 			

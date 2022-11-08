@@ -23,7 +23,10 @@ public class ListaVinculada implements Iterable<Nodo> {
             NInicio.setNSiguiente(newNodo);
             newNodo.setNAnterior(NInicio);
         } else {
-            NInicio.getNSiguiente().addOrdenado(newNodo, criterio);
+        	if (this.criterio != null)
+        		NInicio.getNSiguiente().addOrdenado(newNodo, criterio);
+        	else
+        		NInicio.getNSiguiente().add(newNodo);
         }  
     }
 
