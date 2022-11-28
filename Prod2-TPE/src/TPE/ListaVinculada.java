@@ -19,18 +19,54 @@ public class ListaVinculada implements Iterable<Nodo> {
         Nodo newNodo = new Nodo();
         newNodo.setValor(n);
         size++;
-        if ( NInicio.getNSiguiente() == null) {
+        if (NInicio.getNSiguiente() == null) {
             NInicio.setNSiguiente(newNodo);
-            newNodo.setNAnterior(NInicio);
         } else {
-        	if (this.criterio != null)
-        		NInicio.getNSiguiente().addOrdenado(newNodo, criterio);
+        	if (this.criterio != null) {
+        		
+        		addNodoOrdenado(newNodo);
+        	}
+
         	else
-        		NInicio.getNSiguiente().add(newNodo);
+        		addNodo(newNodo);
         }  
     }
 
-    // b) Eliminar un elemento de la estructura dado una posición. 
+    public void addNodo (Nodo newNodo){
+        Nodo nodoEstructura = NInicio.getNSiguiente();
+        while (nodoEstructura.getNSiguiente() != null)
+        	nodoEstructura = nodoEstructura.getNSiguiente();
+        
+        nodoEstructura.setNSiguiente(newNodo);
+    }
+    
+    public void addNodoOrdenado (Nodo newNodo){
+    	  Nodo nodoSiguiente = NInicio.getNSiguiente();
+    	  Nodo nodoAnterior = NInicio;
+    	  Boolean insertado = false;
+    	  while (!insertado) {
+    		int i = criterio.compare( newNodo.getValor(), nodoSiguiente.getValor());
+            
+            if (i > 0) {
+                if (nodoSiguiente.getNSiguiente() == null) {
+                	nodoSiguiente.setNSiguiente(newNodo);
+                	insertado = true;
+                }
+                else {
+                	nodoAnterior = nodoSiguiente;
+                	nodoSiguiente = nodoSiguiente.getNSiguiente();
+                }
+            }
+            else 
+            {
+            	nodoAnterior.setNSiguiente(newNodo);
+            	newNodo.setNSiguiente(nodoSiguiente);
+                insertado = true;
+            }
+    	}
+    }
+    
+    /*// b) Eliminar un elemento de la estructura dado una posición. 
     public void deleteDato (int pos){
         if (pos > 0 && size >= pos) {
             NInicio.getNSiguiente().deleteOnPosition(pos, 1);
@@ -50,7 +86,6 @@ public class ListaVinculada implements Iterable<Nodo> {
         return i;
     }
 
-  
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void setComparator(Comparator criterio){
         this.criterio = criterio;
@@ -62,7 +97,7 @@ public class ListaVinculada implements Iterable<Nodo> {
             this.NInicio.getNSiguiente().ordenar(i, criterio, 1);
             i--;
         }
-    }
+    }*/
 
     public int getSize() {
         return this.size;

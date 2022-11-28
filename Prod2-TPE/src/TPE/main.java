@@ -24,7 +24,7 @@ import java.util.Iterator;
 public class main {
 
 	public static void main(String[] args) {
-		/*
+		
 		System.out.println("Test Iterador...\n"); 
 		try {
 			ComparadorInteger l = new ComparadorInteger();
@@ -33,16 +33,20 @@ public class main {
 			//insertados en el siguiente orden: 10, 21, 1, 5, 11
 			Integer uno = 1;
 			Integer cinco = 5;
-			int diez = 10;
-			int once = 11;
-			int veintiUno = 21;
+			Integer diez = 10;
+			Integer once = 11;
+			Integer veintiUno = 21;
 			
 			listaNumeros.addDato(diez);
 			listaNumeros.addDato(veintiUno);
 			listaNumeros.addDato(uno);					
 			listaNumeros.addDato(cinco);
 			listaNumeros.addDato(once);
-
+			
+			for (Nodo nodo : listaNumeros) {
+				System.out.println("numero = "+ nodo);
+			}
+/*
 			//b) Se recorra la lista creada (utilizando un foreach) y se impriman los valores por consola
 
 			for (Nodo nodo : listaNumeros) {
@@ -123,7 +127,7 @@ public class main {
 		catch(Exception ex) {
 			System.out.println("Fallo Test!! \nError: "+ ex); 
 		}
-*/
+
 		try {
 			//i) Implementar las siguientes dos estructuras e ins�rtelas en una lista vinculada
 			//ordenadas por cantidad total de alumnos (de mayor a menor)
@@ -206,6 +210,7 @@ public class main {
 			OlimpiadasMatematicas.AddElemento(LosFibo);
 			
 			OlimpiadasMatematicas.Print();
+			*/
 					
 		} catch (Exception e) {
 			// TODO: handle exception
