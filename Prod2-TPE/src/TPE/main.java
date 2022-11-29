@@ -46,23 +46,34 @@ public class main {
 			for (Nodo nodo : listaNumeros) {
 				System.out.println("numero = "+ nodo);
 			}
-/*
-			//b) Se recorra la lista creada (utilizando un foreach) y se impriman los valores por consola
-
+		/*	
+			listaNumeros.deleteDato(0);
+			
+			System.out.println("Luego de borrar...\n"); 
 			for (Nodo nodo : listaNumeros) {
 				System.out.println("numero = "+ nodo);
 			}
+			*/
 
+			//b) Se recorra la lista creada (utilizando un foreach) y se impriman los valores por consola
+/*
+			for (Nodo nodo : listaNumeros) {
+				System.out.println("numero = "+ nodo);
+			}
+*/
 			//c) Se elimine el primer elemento de la lista (por posici�n), luego el elemento �5� y luego
 			//el elemento �11� (dado el elemento). Volver a recorrer e imprimir la lista resultante.
 
-			listaNumeros.deleteDato(1);
-			listaNumeros.deleteOcurrencias(5);
-			listaNumeros.deleteOcurrencias(11);
-
-			for (Nodo nodo : listaNumeros) {
-				System.out.println("numero = "+ nodo);
-			}
+			/*listaNumeros.deleteDato(1);
+			listaNumeros.deleteOcurrencias(cinco);
+			listaNumeros.deleteOcurrencias(once);
+			System.out.println("Luego de borrar...\n"); 
+			*/
+			
+			//System.out.println("posicion = "+ listaNumeros.posElemento(6)); 
+			
+			
+			
 			
 			//d) Se cree la lista de strings mostrada en la figura 2 del punto 1, con los valores
 			//insertados en el siguiente orden: �F�cil�, �Es�, �Parcial�, �Prog 2�.
@@ -210,7 +221,7 @@ public class main {
 			OlimpiadasMatematicas.AddElemento(LosFibo);
 			
 			OlimpiadasMatematicas.Print();
-			*/
+			
 					
 		} catch (Exception e) {
 			// TODO: handle exception

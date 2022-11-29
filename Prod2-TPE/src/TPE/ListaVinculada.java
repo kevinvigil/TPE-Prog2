@@ -41,8 +41,8 @@ public class ListaVinculada implements Iterable<Nodo> {
     }
     
     public void addNodoOrdenado (Nodo newNodo){
-    	  Nodo nodoSiguiente = NInicio.getNSiguiente();
-    	  Nodo nodoAnterior = NInicio;
+    	  Nodo nodoSiguiente = this.NInicio.getNSiguiente();
+    	  Nodo nodoAnterior = this.NInicio;
     	  Boolean insertado = false;
     	  while (!insertado) {
     		int i = criterio.compare( newNodo.getValor(), nodoSiguiente.getValor());
@@ -66,31 +66,63 @@ public class ListaVinculada implements Iterable<Nodo> {
     	}
     }
     
-    /*// b) Eliminar un elemento de la estructura dado una posición. 
+    // b) Eliminar un elemento de la estructura dado una posición. 
     public void deleteDato (int pos){
-        if (pos > 0 && size >= pos) {
-            NInicio.getNSiguiente().deleteOnPosition(pos, 1);
-            size--;
+    	int iterador = 0;
+    	Nodo nodoIterador = this.NInicio;
+    	Nodo nodoAnterior = this.NInicio;
+    
+        while (iterador < pos && nodoIterador != null) {
+        	nodoAnterior = nodoIterador;
+        	nodoIterador = nodoIterador.getNSiguiente();
+        	iterador++;
+        }
+        
+        if (nodoIterador != null) {
+        	nodoAnterior.setNSiguiente(nodoIterador.getNSiguiente());
+        	nodoIterador = null;
         }
     }
-
+    
     // c) Eliminar todas las ocurrencias de un elemento de la estructura dado el elemento. 
     public void deleteOcurrencias(Object o){
-        int i = this.NInicio.getNSiguiente().deleteTodasOcurrencias(o);
-        size -= i;
+    	Nodo nodoIterador = this.NInicio.getNSiguiente();
+    	Nodo nodoAnterior = this.NInicio;
+    
+        while (nodoIterador != null) {
+            if (nodoIterador.equals(o)) {
+            	nodoAnterior.setNSiguiente(nodoIterador.getNSiguiente());
+            }
+            else {
+            	nodoAnterior = nodoIterador;
+            }
+        	nodoIterador = nodoIterador.getNSiguiente();
+        }
     }
 
     // d) Obtener la posicion de la primera ocurrencia de un elemento dado.
     public int posElemento(Object o) {
-        int i = NInicio.getNSiguiente().getPosElemento(o, 1);
-        return i;
+        int iterador = 1;
+    	Nodo nodoIterador = this.NInicio.getNSiguiente();
+
+        while (nodoIterador != null && !nodoIterador.equals(o)) {
+        	nodoIterador = nodoIterador.getNSiguiente();
+        	iterador++;
+        }
+        
+        if (nodoIterador == null)
+        	return -1;
+        
+        return iterador;
+
+        
     }
 
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void setComparator(Comparator criterio){
         this.criterio = criterio;
     }
-
+    /*
     public void order(){
         int i = size;
         while (i > 1) {

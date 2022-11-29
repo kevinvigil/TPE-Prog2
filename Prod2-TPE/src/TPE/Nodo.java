@@ -47,4 +47,14 @@ public class Nodo {
     public String toString() {
         return this.valor.toString();
     }
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return  this.valor.equals(obj);
+	}
+    
+    
+    
+    
 }
