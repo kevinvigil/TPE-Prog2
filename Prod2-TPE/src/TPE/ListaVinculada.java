@@ -12,6 +12,7 @@ public class ListaVinculada implements Iterable<Nodo> {
     public ListaVinculada(Comparator comparador){ 
         this.NInicio = new Nodo();
         this.criterio = comparador;
+        this.size = 0;
     }
 
     // a) Insertar un nuevo elemento en la estructura. 
@@ -23,12 +24,10 @@ public class ListaVinculada implements Iterable<Nodo> {
             NInicio.setNSiguiente(newNodo);
         } else {
         	if (this.criterio != null) {
-        		
         		addNodoOrdenado(newNodo);
-        	}
-
-        	else
-        		addNodo(newNodo);
+        	} else {
+                addNodo(newNodo);
+            }
         }  
     }
 
@@ -38,6 +37,7 @@ public class ListaVinculada implements Iterable<Nodo> {
         	nodoEstructura = nodoEstructura.getNSiguiente();
         
         nodoEstructura.setNSiguiente(newNodo);
+        this.size++;
     }
     
     public void addNodoOrdenado (Nodo newNodo){
@@ -51,17 +51,16 @@ public class ListaVinculada implements Iterable<Nodo> {
                 if (nodoSiguiente.getNSiguiente() == null) {
                 	nodoSiguiente.setNSiguiente(newNodo);
                 	insertado = true;
-                }
-                else {
+                    this.size++;
+                } else {
                 	nodoAnterior = nodoSiguiente;
                 	nodoSiguiente = nodoSiguiente.getNSiguiente();
                 }
-            }
-            else 
-            {
+            } else {
             	nodoAnterior.setNSiguiente(newNodo);
             	newNodo.setNSiguiente(nodoSiguiente);
                 insertado = true;
+                this.size++;
             }
     	}
     }
@@ -81,6 +80,7 @@ public class ListaVinculada implements Iterable<Nodo> {
         if (nodoIterador != null) {
         	nodoAnterior.setNSiguiente(nodoIterador.getNSiguiente());
         	nodoIterador = null;
+            this.size--;
         }
     }
     
@@ -92,8 +92,8 @@ public class ListaVinculada implements Iterable<Nodo> {
         while (nodoIterador != null) {
             if (nodoIterador.equals(o)) {
             	nodoAnterior.setNSiguiente(nodoIterador.getNSiguiente());
-            }
-            else {
+                this.size--;
+            } else {
             	nodoAnterior = nodoIterador;
             }
         	nodoIterador = nodoIterador.getNSiguiente();
@@ -110,26 +110,49 @@ public class ListaVinculada implements Iterable<Nodo> {
         	iterador++;
         }
         
-        if (nodoIterador == null)
-        	return -1;
-        
-        return iterador;
+        if (nodoIterador == null){
+            iterador = -1;
+        }
 
-        
+        return iterador;        
     }
 
     // f) Permitir cambiar la forma en la que se ordenan los elementos (con el subsecuente reordenamiento de los elementos ya almacenados.
     public void setComparator(Comparator criterio){
         this.criterio = criterio;
     }
-    /*
+
     public void order(){
         int i = size;
+        int j = size;
+        Nodo primero;
+        Nodo segundo;
+        Nodo base;
         while (i > 1) {
-            this.NInicio.getNSiguiente().ordenar(i, criterio, 1);
+            base = this.NInicio;
+            primero = this.NInicio.getNSiguiente();
+            segundo = primero.getNSiguiente();
+            while (j > 1) {
+                if (criterio.compare(primero.getValor(), segundo.getValor()) > 1) {
+                    intercambio(base, primero, segundo);
+                }
+                base = primero;
+                primero = segundo;
+                if (segundo.getNSiguiente() != null) {
+                    segundo = segundo.getNSiguiente();
+                }
+                j--;
+            }
             i--;
+            j = i;
         }
-    }*/
+    }
+
+    public void intercambio (Nodo base, Nodo primero, Nodo segundo){
+        base.setNSiguiente(segundo);
+        primero.setNSiguiente(segundo.getNSiguiente());
+        segundo.setNSiguiente(primero);
+    }
 
     public int getSize() {
         return this.size;
